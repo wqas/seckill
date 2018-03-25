@@ -11,10 +11,13 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.seckill.dao.SeckillDao;
 import org.seckill.entity.Seckill;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring/spring-dao.xml" })
 public class SeckillDaoTest {
+	private final Logger logger = (Logger) LoggerFactory.getLogger(this.getClass()); 
 	
 	@Resource
 	private SeckillDao seckillDao;
@@ -27,6 +30,7 @@ public class SeckillDaoTest {
 		Seckill seckill = seckillDao.queryId(id);
 		System.out.println("seckill.getName()" + seckill.getName());
 		System.out.println("seckill :" + seckill);
+		logger.info("seckill: " + seckill);
 
 	}
 	
